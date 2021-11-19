@@ -15,7 +15,7 @@ namespace Alessia.Lionetto.Tombola
 
             for (int i = 0; i < numeriScelti.Length; i++)
             {
-                int num = int.Parse(Console.ReadLine());
+                int num;
 
 
                 while (!(int.TryParse(Console.ReadLine(), out num) && num >= 1 && num <= 90))
@@ -69,6 +69,10 @@ namespace Alessia.Lionetto.Tombola
                 if (found == -1)
                 {
                     estrazioneNumeri[i] = num;
+                }
+                else
+                {
+                    i--;
                 }
             }
             return estrazioneNumeri;
@@ -124,33 +128,41 @@ namespace Alessia.Lionetto.Tombola
 
         internal static void CheckWin(int[] sceltaNumeri, int[] numeriEstratti)
         {
-            int[] numeriVincenti;
+            int[] numeriVincenti = new int[5];
+            int count = 0;
+            Console.WriteLine("i numeri vincenti sono:");
             for (int i = 0;i<numeriEstratti.Length;i++)
             {
-                
-                
+
                 int found = Array.IndexOf(sceltaNumeri, numeriEstratti[i]);
-                numeriVincenti[i] = numeriEstratti[i];
-                for (int j = 0; j < numeriVincenti.Length; j++)
+               
+                if (found != -1)
                 {
-                    Console.WriteLine("questi sono i tuoi numeri vincenti: "+numeriVincenti[j]);
+                    numeriVincenti[count] = numeriEstratti[i];
+                    Console.WriteLine(numeriVincenti[count]);
+                    count++;
+
+
                 }
                 
+                
             }
-            if (numeriVincenti.Length==2)
+            
+            
+            if (count==2)
             {
                 Console.WriteLine("AMBO");
 
             }
-            else if (numeriVincenti.Length == 3)
+            else if (count== 3)
             {
                 Console.WriteLine("terna");
             }
-            else if (numeriVincenti.Length == 4)
+            else if (count == 4)
             {
                 Console.WriteLine("quaterna");
             }
-            else if (numeriVincenti.Length == 5)
+            else if (count == 5)
             {
                 Console.WriteLine("cinquina");
             }
