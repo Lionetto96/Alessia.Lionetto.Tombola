@@ -31,6 +31,7 @@ namespace Alessia.Lionetto.Tombola
                 else
                 {
                     Console.WriteLine("questo numero è già presente");
+                    i--;
                 }
 
                 
